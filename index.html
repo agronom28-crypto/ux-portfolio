@@ -3,185 +3,581 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Сергей Николаенко — UX Designer</title>
-//fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Сергей Николаенко — UX Designer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a0f;--surface:#12121a;--card:#1a1a26;--border:#2a2a3a;--text:#e8e8f0;--muted:#8888a0;--accent:#6c5ce7;--accent2:#a29bfe;--gradient1:linear-gradient(135deg,#6c5ce7,#a29bfe,#74b9ff);--gradient2:linear-gradient(135deg,#fd79a8,#e17055,#fdcb6e);--gradient3:linear-gradient(135deg,#00cec9,#0984e3,#6c5ce7);--gradient4:linear-gradient(135deg,#55efc4,#81ecec,#74b9ff)}
+:root{
+--bg:#0a0a0f;
+--surface:#12121a;
+--card:#1a1a26;
+--border:#2a2a3a;
+--text:#e8e8f0;
+--muted:#8888a0;
+--accent:#6c5ce7;
+--accent2:#a29bfe;
+--gradient1:linear-gradient(135deg,#6c5ce7,#a29bfe);
+--gradient2:linear-gradient(135deg,#fd79a8,#e17055);
+--gradient3:linear-gradient(135deg,#00cec9,#0984e3);
+--gradient4:linear-gradient(135deg,#fdcb6e,#e17055);
+--radius:16px;
+--transition:all .4s cubic-bezier(.4,0,.2,1)
+}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-a{color:var(--accent2);text-decoration:none;transition:.3s}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:var(--accent2);text-decoration:none;transition:var(--transition)}
 a:hover{color:#fff}
-.container{max-width:1100px;margin:0 auto;padding:0 24px}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 0}
-nav .container{display:flex;justify-content:space-between;align-items:center}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:var(--transition)}
+nav .container{display:flex;justify-content:space-between;align-items:center;height:72px}
 .logo{font-weight:700;font-size:1.2rem;background:var(--gradient1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 nav ul{display:flex;gap:32px;list-style:none}
-nav ul a{color:var(--muted);font-size:.9rem;font-weight:500}
+nav ul a{color:var(--muted);font-size:.9rem;font-weight:500;position:relative}
 nav ul a:hover{color:#fff}
+nav ul a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gradient1);transition:var(--transition)}
+nav ul a:hover::after{width:100%}
+.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:80px;position:relative}
-.hero::before{content:'';position:absolute;top:20%;left:50%;width:600px;height:600px;background:radial-gradient(circle,rgba(108,92,231,.15),transparent 70%);transform:translate(-50%,-50%);pointer-events:none}
-.hero-content{max-width:700px}
-.hero-badge{display:inline-block;padding:6px 16px;border:1px solid var(--border);border-radius:50px;font-size:.8rem;color:var(--muted);margin-bottom:24px;letter-spacing:1px;text-transform:uppercase}
-.hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;line-height:1.1;margin-bottom:24px}
-.hero h1 span{background:var(--gradient1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:1.15rem;color:var(--muted);max-width:520px;margin-bottom:40px}
-.btn-group{display:flex;gap:16px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:600;font-size:.95rem;transition:.3s}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:#5a4bd1;color:#fff;transform:translateY(-2px)}
-.btn-outline{border:1px solid var(--border);color:var(--text)}
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:72px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:10%;left:50%;width:700px;height:700px;background:radial-gradient(circle,rgba(108,92,231,.12) 0%,transparent 70%);transform:translateX(-50%);pointer-events:none}
+.hero-content{max-width:800px;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid var(--border);border-radius:50px;font-size:.85rem;color:var(--muted);margin-bottom:24px}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#00b894;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:24px}
+.hero h1 .gradient-text{background:var(--gradient1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:600px;margin-bottom:40px}
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:600;font-size:.95rem;transition:var(--transition);cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:var(--gradient1);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(108,92,231,.4);color:#fff}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
 .btn-outline:hover{border-color:var(--accent);color:#fff;transform:translateY(-2px)}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:80px}
+.stat{text-align:center;padding:24px}
+.stat-number{font-size:2.5rem;font-weight:800;background:var(--gradient1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:.85rem;color:var(--muted);margin-top:4px}
 
 /* SECTIONS */
 section{padding:100px 0}
-.section-label{font-size:.8rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent2);margin-bottom:12px}
-.section-title{font-size:2.2rem;font-weight:700;margin-bottom:48px}
+.section-header{text-align:center;margin-bottom:64px}
+.section-label{display:inline-block;padding:6px 16px;border:1px solid var(--border);border-radius:50px;font-size:.8rem;color:var(--accent2);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:16px}
+.section-desc{font-size:1.05rem;color:var(--muted);max-width:600px;margin:0 auto}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:var(--transition);position:relative;overflow:hidden}
+.service-card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient1);opacity:0;transition:var(--transition)}
+.service-card:hover::before{opacity:1}
+.service-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px}
+.service-card h3{font-size:1.15rem;font-weight:700;margin-bottom:8px}
+.service-card p{font-size:.9rem;color:var(--muted)}
 
 /* PROJECTS */
-.projects-grid{display:flex;flex-direction:column;gap:64px}
-.project-card{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:40px;transition:.3s}
-.project-card:hover{border-color:var(--accent);transform:translateY(-4px)}
-.project-img{border-radius:12px;overflow:hidden;aspect-ratio:16/10;position:relative}
-.project-img .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;font-weight:800;color:rgba(255,255,255,.15)}
-.project-img.g1 .placeholder{background:var(--gradient1)}
-.project-img.g2 .placeholder{background:var(--gradient2)}
-.project-img.g3 .placeholder{background:var(--gradient3)}
-.project-img svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60%;height:60%;opacity:.2}
-.project-info h3{font-size:1.5rem;margin-bottom:8px}
-.project-tag{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:600;background:rgba(108,92,231,.15);color:var(--accent2);margin-bottom:16px}
-.project-info p{color:var(--muted);margin-bottom:20px;font-size:.95rem}
-.project-metrics{display:flex;gap:24px;margin-bottom:20px}
-.metric{text-align:center}
-.metric .num{font-size:1.4rem;font-weight:700;background:var(--gradient1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.metric .label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
-.project-tools{display:flex;gap:8px;flex-wrap:wrap}
-.tool-tag{padding:4px 10px;border-radius:6px;font-size:.75rem;background:var(--card);color:var(--muted);border:1px solid var(--border)}
-
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
-.skill-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;transition:.3s;position:relative;overflow:hidden}
-.skill-card:hover{border-color:var(--accent);transform:translateY(-4px)}
-.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.skill-card:nth-child(1)::before{background:var(--gradient1)}
-.skill-card:nth-child(2)::before{background:var(--gradient2)}
-.skill-card:nth-child(3)::before{background:var(--gradient3)}
-.skill-card:nth-child(4)::before{background:var(--gradient4)}
-.skill-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:16px}
-.skill-card:nth-child(1) .skill-icon{background:rgba(108,92,231,.15)}
-.skill-card:nth-child(2) .skill-icon{background:rgba(253,121,168,.15)}
-.skill-card:nth-child(3) .skill-icon{background:rgba(0,206,201,.15)}
-.skill-card:nth-child(4) .skill-icon{background:rgba(85,239,196,.15)}
-.skill-card h3{font-size:1.1rem;margin-bottom:8px}
-.skill-card p{color:var(--muted);font-size:.9rem}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition)}
+.project-card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 20px 60px rgba(108,92,231,.15)}
+.project-preview{height:280px;position:relative;overflow:hidden}
+.project-preview .overlay{position:absolute;inset:0;background:rgba(10,10,15,.6);display:flex;align-items:center;justify-content:center;opacity:0;transition:var(--transition)}
+.project-card:hover .overlay{opacity:1}
+.project-info{padding:28px}
+.project-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.project-tag{padding:4px 12px;border-radius:50px;font-size:.75rem;font-weight:500;border:1px solid var(--border);color:var(--muted)}
+.project-info h3{font-size:1.3rem;font-weight:700;margin-bottom:8px}
+.project-info p{font-size:.9rem;color:var(--muted);margin-bottom:16px}
+.project-link{display:inline-flex;align-items:center;gap:6px;font-size:.9rem;font-weight:600;color:var(--accent2)}
+.project-link:hover{color:#fff}
 
 /* PROCESS */
-.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:step}
-.step{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px 24px;text-align:center;position:relative;transition:.3s}
-.step:hover{border-color:var(--accent);transform:translateY(-4px)}
-.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-size:3rem;font-weight:800;background:var(--gradient1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:16px}
-.step h3{font-size:1rem;margin-bottom:8px}
-.step p{font-size:.85rem;color:var(--muted)}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.process-step{text-align:center;padding:32px 20px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);position:relative;transition:var(--transition)}
+.process-step:hover{transform:translateY(-4px);border-color:var(--accent)}
+.process-number{font-size:3rem;font-weight:800;background:var(--gradient1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:16px}
+.process-step h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+.process-step p{font-size:.85rem;color:var(--muted)}
 
-/* CONTACT */
-.contact{text-align:center}
-.contact p{color:var(--muted);font-size:1.1rem;max-width:500px;margin:0 auto 40px}
-.contact-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
-.contact-link{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border:1px solid var(--border);border-radius:12px;font-weight:500;transition:.3s}
-.contact-link:hover{border-color:var(--accent);background:var(--surface);color:#fff;transform:translateY(-2px)}
+/* SKILLS */
+.skills-container{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.skill-category h3{font-size:1.1rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.skill-list{display:flex;flex-wrap:wrap;gap:10px}
+.skill-tag{padding:8px 18px;background:var(--surface);border:1px solid var(--border);border-radius:50px;font-size:.85rem;color:var(--muted);transition:var(--transition)}
+.skill-tag:hover{border-color:var(--accent);color:var(--text)}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:var(--transition)}
+.testimonial-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.testimonial-text{font-size:.95rem;color:var(--muted);margin-bottom:20px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;color:#fff}
+.testimonial-name{font-weight:600;font-size:.9rem}
+.testimonial-role{font-size:.8rem;color:var(--muted)}
+
+/* CTA */
+.cta{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:64px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(108,92,231,.08) 0%,transparent 50%);pointer-events:none}
+.cta h2{font-size:2.5rem;font-weight:800;margin-bottom:16px}
+.cta p{color:var(--muted);margin-bottom:32px;font-size:1.05rem}
 
 /* FOOTER */
-footer{border-top:1px solid var(--border);padding:32px 0;text-align:center}
-footer p{color:var(--muted);font-size:.85rem}
+footer{padding:40px 0;border-top:1px solid var(--border)}
+footer .container{display:flex;justify-content:space-between;align-items:center}
+.footer-text{font-size:.85rem;color:var(--muted)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:var(--muted);font-size:.85rem}
+.footer-links a:hover{color:#fff}
 
-/* MOBILE */
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.services-grid,.testimonials-grid{grid-template-columns:repeat(2,1fr)}
+.process-grid{grid-template-columns:repeat(2,1fr)}
+.projects-grid{grid-template-columns:1fr}
+}
 @media(max-width:768px){
-nav ul{gap:16px}
-.project-card{grid-template-columns:1fr;gap:24px;padding:24px}
-.process-steps{grid-template-columns:1fr 1fr}
-.skills-grid{grid-template-columns:1fr 1fr}
+nav ul{display:none}
+.nav-toggle{display:block}
+.hero h1{font-size:2rem}
+.stats{grid-template-columns:repeat(2,1fr)}
+.services-grid,.skills-container,.testimonials-grid{grid-template-columns:1fr}
+.process-grid{grid-template-columns:repeat(2,1fr)}
+.cta{padding:40px 24px}
+footer .container{flex-direction:column;gap:16px;text-align:center}
 }
 @media(max-width:480px){
-nav ul{display:none}
-.process-steps{grid-template-columns:1fr}
-.skills-grid{grid-template-columns:1fr}
-.btn-group{flex-direction:column}
+.stats{grid-template-columns:1fr}
+.process-grid{grid-template-columns:1fr}
+.hero-buttons{flex-direction:column}
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
 <div class="container">
-<div class="logo">SN.design</div>
+<a href="#" class="logo">SN.design</a>
 <ul>
-><a href="#projects">Проекты</a></li>
-><a href="#skills">Навыки</a></li>
-><a href="#process">Процесс</a></li>
-><a href="#contact">Контакт</a></li>
+<li><a href="#services">Услуги</a></li>
+<li><a href="#projects">Проекты</a></li>
+<li><a href="#process">Процесс</a></li>
+<li><a href="#skills">Навыки</a></li>
+<li><a href="#contact">Контакт</a></li>
 </ul>
+<button class="nav-toggle" aria-label="Menu">☰</button>
 </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
 <div class="container">
 <div class="hero-content">
-<div class="hero-badge">UX / UI Designer</div>
-<h1>Создаю <span>интуитивные</span> цифровые продукты</h1>
-<p>Проектирую интерфейсы сложных сервисов, личных кабинетов и мобильных приложений. От исследований до готовых макетов в Figma.</p>
-<div class="btn-group">
-<a href="#projects" class="btn btn-primary">Смотреть работы</a>
+<div class="hero-badge"><span class="dot"></span> Открыт для новых проектов</div>
+<h1>Сергей Николаенко<br><span class="gradient-text">UX/UI Дизайнер</span></h1>
+<p>Проектирую сложные сервисы и личные кабинеты. От UX-исследований до готовых макетов в Figma. E-commerce, Health/Fintech, SaaS и MVP-продукты.</p>
+<div class="hero-buttons">
+<a href="#projects" class="btn btn-primary">Смотреть проекты →</a>
 <a href="#contact" class="btn btn-outline">Написать мне</a>
+</div>
+</div>
+<div class="stats fade-in">
+<div class="stat"><div class="stat-number">5+</div><div class="stat-label">Лет опыта</div></div>
+<div class="stat"><div class="stat-number">40+</div><div class="stat-label">Проектов</div></div>
+<div class="stat"><div class="stat-number">15+</div><div class="stat-label">Клиентов</div></div>
+<div class="stat"><div class="stat-number">98%</div><div class="stat-label">Довольных</div></div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<div class="container">
+<div class="section-header fade-in">
+<span class="section-label">Услуги</span>
+<h2 class="section-title">Что я делаю</h2>
+<p class="section-desc">Полный цикл UX/UI дизайна — от исследований до готового продукта</p>
+</div>
+<div class="services-grid">
+<div class="service-card fade-in">
+<div class="service-icon" style="background:linear-gradient(135deg,rgba(108,92,231,.2),rgba(162,155,254,.2))">&#127912;</div>
+<h3>UX-исследования</h3>
+<p>Глубинные интервью, CJM, Jobs-to-be-Done, конкурентный анализ, персоны пользователей</p>
+</div>
+<div class="service-card fade-in">
+<div class="service-icon" style="background:linear-gradient(135deg,rgba(253,121,168,.2),rgba(225,112,85,.2))">&#9997;</div>
+<h3>Проектирование интерфейсов</h3>
+<p>Wireframes, прототипы, интерактивные макеты в Figma с дизайн-системой</p>
+</div>
+<div class="service-card fade-in">
+<div class="service-icon" style="background:linear-gradient(135deg,rgba(0,206,201,.2),rgba(9,132,227,.2))">&#128187;</div>
+<h3>UI-дизайн</h3>
+<p>Пиксель-перфект макеты, дизайн-системы, адаптивные интерфейсы, мобайл-фёрст</p>
+</div>
+<div class="service-card fade-in">
+<div class="service-icon" style="background:linear-gradient(135deg,rgba(253,203,110,.2),rgba(225,112,85,.2))">&#128202;</div>
+<h3>Юзабилити-тестирование</h3>
+<p>Модерируемые и немодерируемые тесты, A/B-эксперименты, анализ метрик</p>
+</div>
+<div class="service-card fade-in">
+<div class="service-icon" style="background:linear-gradient(135deg,rgba(108,92,231,.2),rgba(0,206,201,.2))">&#128640;</div>
+<h3>MVP-продукты</h3>
+<p>Быстрый запуск продукта: от гипотезы до кликабельного прототипа за 2–4 недели</p>
+</div>
+<div class="service-card fade-in">
+<div class="service-icon" style="background:linear-gradient(135deg,rgba(253,121,168,.2),rgba(108,92,231,.2))">&#129302;</div>
+<h3>Дизайн-системы</h3>
+<p>Компонентные библиотеки, UI-киты, гайдлайны, токены для команд</p>
 </div>
 </div>
 </div>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects">
 <div class="container">
-<div class="section-label">Портфолио</div>
+<div class="section-header fade-in">
+<span class="section-label">Портфолио</span>
 <h2 class="section-title">Избранные проекты</h2>
+<p class="section-desc">Образцы работ, демонстрирующие мой подход к проектированию интерфейсов</p>
+</div>
 <div class="projects-grid">
 
-<div class="project-card">
-<div class="project-img g1">
-<div class="placeholder">
-<svg viewBox="0 0 400 250" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="20" y="20" width="160" height="30" rx="8" fill="white" opacity="0.15"/>
-<rect x="20" y="70" width="360" height="120" rx="12" fill="white" opacity="0.1"/>
-ircle cx="80" cy="130" r="30" fill="white" opacity="0.12"/>
-<rect x="130" y="110" width="120" height="12" rx="4" fill="white" opacity="0.12"/>
-<rect x="130" y="130" width="80" height="12" rx="4" fill="white" opacity="0.08"/>
-<rect x="20" y="210" width="100" height="28" rx="8" fill="white" opacity="0.15"/>
-<rect x="140" y="210" width="100" height="28" rx="8" fill="white" opacity="0.08"/>
-</svg>
+<div class="project-card fade-in">
+<div class="project-preview" style="background:linear-gradient(135deg,#6c5ce7,#0984e3);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px">
+<div style="display:flex;gap:8px">
+<div style="width:180px;height:100px;background:rgba(255,255,255,.15);border-radius:12px;backdrop-filter:blur(10px)"></div>
+<div style="width:100px;height:100px;background:rgba(255,255,255,.1);border-radius:12px"></div>
 </div>
+<div style="display:flex;gap:8px">
+<div style="width:100px;height:60px;background:rgba(255,255,255,.1);border-radius:8px"></div>
+<div style="width:180px;height:60px;background:rgba(255,255,255,.12);border-radius:8px"></div>
+</div>
+<div class="overlay"><span class="btn btn-primary">Подробнее</span></div>
 </div>
 <div class="project-info">
-<div class="project-tag">Fintech</div>
-<h3>FinWallet — Мобильный банк</h3>
-<p>Редизайн мобильного приложения для управления финансами. Упростил навигацию, переработал дашборд и flow переводов.</p>
-<div class="project-metrics">
-<div class="metric"><div class="num">+34%</div><div class="label">Конверсия</div></div>
-<div class="metric"><div class="num">-40%</div><div class="label">Время задачи</div></div>
-<div class="metric"><div class="num">4.8</div><div class="label">App Store</div></div>
-</div>
-<div class="project-tools">
-<span class="tool-tag">Figma</span>
-<span class="tool-tag">Maze</span>
-<span class="tool-tag">iOS HIG</span>
-</div>
+<div class="project-tags"><span class="project-tag">Fintech</span><span class="project-tag">Dashboard</span><span class="project-tag">Figma</span></div>
+<h3>Fintech Dashboard</h3>
+<p>Личный кабинет для финансовой платформы: аналитика, транзакции, портфель, уведомления. Дизайн-система на 120+ компонентов.</p>
+<a href="#" class="project-link">Смотреть кейс →</a>
 </div>
 </div>
 
-<div class="project-card">
-<div class="project-img g2">
-<div class="placeholder">
-<svg viewBox="0 0 400 250" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="20" y="20" width="80" height="80" rx="12" fill="white" opacity="0.12"/>
-<rect x="120" y="20" width="80" height="80" rx="12" fill="white" opacity="0.1"/>
-<rect x="
+<div class="project-card fade-in">
+<div class="project-preview" style="background:linear-gradient(135deg,#fd79a8,#e17055);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px">
+<div style="width:140px;height:220px;background:rgba(255,255,255,.15);border-radius:20px;position:relative;overflow:hidden">
+<div style="height:30px;background:rgba(255,255,255,.1)"></div>
+<div style="padding:8px;display:flex;flex-direction:column;gap:6px">
+<div style="height:12px;width:80%;background:rgba(255,255,255,.15);border-radius:4px"></div>
+<div style="height:40px;background:rgba(255,255,255,.08);border-radius:8px"></div>
+<div style="height:40px;background:rgba(255,255,255,.08);border-radius:8px"></div>
+</div>
+</div>
+<div class="overlay"><span class="btn btn-primary">Подробнее</span></div>
+</div>
+<div class="project-info">
+<div class="project-tags"><span class="project-tag">Health</span><span class="project-tag">Mobile App</span><span class="project-tag">iOS</span></div>
+<h3>Health & Wellness App</h3>
+<p>Мобильное приложение для трекинга здоровья: питание, сон, активность, запись к врачу. 50+ экранов, iOS HIG.</p>
+<a href="#" class="project-link">Смотреть кейс →</a>
+</div>
+</div>
+
+<div class="project-card fade-in">
+<div class="project-preview" style="background:linear-gradient(135deg,#00cec9,#0984e3);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px">
+<div style="width:260px;height:40px;background:rgba(255,255,255,.12);border-radius:8px"></div>
+<div style="display:flex;gap:8px">
+<div style="width:80px;height:140px;background:rgba(255,255,255,.1);border-radius:10px"></div>
+<div style="width:80px;height:140px;background:rgba(255,255,255,.15);border-radius:10px"></div>
+<div style="width:80px;height:140px;background:rgba(255,255,255,.1);border-radius:10px"></div>
+</div>
+<div class="overlay"><span class="btn btn-primary">Подробнее</span></div>
+</div>
+<div class="project-info">
+<div class="project-tags"><span class="project-tag">E-commerce</span><span class="project-tag">Web</span><span class="project-tag">Responsive</span></div>
+<h3>E-commerce Платформа</h3>
+<p>Интернет-магазин с каталогом, фильтрами, корзиной и личным кабинетом. Конверсия checkout +34%.</p>
+<a href="#" class="project-link">Смотреть кейс →</a>
+</div>
+</div>
+
+<div class="project-card fade-in">
+<div class="project-preview" style="background:linear-gradient(135deg,#fdcb6e,#e17055);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px">
+<div style="width:240px;background:rgba(255,255,255,.12);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;gap:8px;align-items:center"><div style="width:32px;height:32px;background:rgba(255,255,255,.2);border-radius:50%"></div><div style="height:10px;width:80px;background:rgba(255,255,255,.15);border-radius:4px"></div></div>
+<div style="height:8px;width:100%;background:rgba(255,255,255,.1);border-radius:4px"></div>
+<div style="height:8px;width:70%;background:rgba(255,255,255,.1);border-radius:4px"></div>
+<div style="height:60px;background:rgba(255,255,255,.08);border-radius:8px;margin-top:8px"></div>
+</div>
+<div class="overlay"><span class="btn btn-primary">Подробнее</span></div>
+</div>
+<div class="project-info">
+<div class="project-tags"><span class="project-tag">SaaS</span><span class="project-tag">CRM</span><span class="project-tag">B2B</span></div>
+<h3>SaaS CRM-система</h3>
+<p>CRM для отделов продаж: воронки, аналитика, интеграции с мессенджерами. Kanban-доски, таймлайн, отчёты.</p>
+<a href="#" class="project-link">Смотреть кейс →</a>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+<div class="container">
+<div class="section-header fade-in">
+<span class="section-label">Процесс</span>
+<h2 class="section-title">Как я работаю</h2>
+<p class="section-desc">Четыре этапа от идеи до готового продукта</p>
+</div>
+<div class="process-grid">
+<div class="process-step fade-in">
+<div class="process-number">01</div>
+<h3>Исследование</h3>
+<p>Анализ конкурентов, интервью, аудит текущего продукта, CJM и персоны</p>
+</div>
+<div class="process-step fade-in">
+<div class="process-number">02</div>
+<h3>Проектирование</h3>
+<p>Информационная архитектура, user flows, wireframes, прототипы</p>
+</div>
+<div class="process-step fade-in">
+<div class="process-number">03</div>
+<h3>Дизайн</h3>
+<p>UI-макеты, дизайн-система, адаптивность, микроинтеракции</p>
+</div>
+<div class="process-step fade-in">
+<div class="process-number">04</div>
+<h3>Тестирование</h3>
+<p>Юзабилити-тесты, итерации, передача в разработку, поддержка</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+<div class="container">
+<div class="section-header fade-in">
+<span class="section-label">Навыки</span>
+<h2 class="section-title">Инструменты и навыки</h2>
+</div>
+<div class="skills-container fade-in">
+<div class="skill-category">
+<h3>&#127912; Дизайн</h3>
+<div class="skill-list">
+<span class="skill-tag">Figma</span>
+<span class="skill-tag">Sketch</span>
+<span class="skill-tag">Adobe XD</span>
+<span class="skill-tag">Photoshop</span>
+<span class="skill-tag">Illustrator</span>
+<span class="skill-tag">After Effects</span>
+<span class="skill-tag">Principle</span>
+</div>
+</div>
+<div class="skill-category">
+<h3>&#128202; UX-методы</h3>
+<div class="skill-list">
+<span class="skill-tag">User Research</span>
+<span class="skill-tag">CJM</span>
+<span class="skill-tag">JTBD</span>
+<span class="skill-tag">Personas</span>
+<span class="skill-tag">Wireframing</span>
+<span class="skill-tag">Prototyping</span>
+<span class="skill-tag">A/B Testing</span>
+<span class="skill-tag">Heuristic Evaluation</span>
+</div>
+</div>
+<div class="skill-category">
+<h3>&#128187; Технологии</h3>
+<div class="skill-list">
+<span class="skill-tag">HTML/CSS</span>
+<span class="skill-tag">JavaScript</span>
+<span class="skill-tag">React</span>
+<span class="skill-tag">Tailwind CSS</span>
+<span class="skill-tag">Git</span>
+<span class="skill-tag">Webflow</span>
+<span class="skill-tag">Tilda</span>
+</div>
+</div>
+<div class="skill-category">
+<h3>&#128640; Продукт</h3>
+<div class="skill-list">
+<span class="skill-tag">Agile/Scrum</span>
+<span class="skill-tag">Jira</span>
+<span class="skill-tag">Notion</span>
+<span class="skill-tag">Miro</span>
+<span class="skill-tag">FigJam</span>
+<span class="skill-tag">Analytics</span>
+<span class="skill-tag">Design Systems</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+<div class="container">
+<div class="section-header fade-in">
+<span class="section-label">Отзывы</span>
+<h2 class="section-title">Что говорят клиенты</h2>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card fade-in">
+<div class="testimonial-text">Сергей полностью переделал наш личный кабинет. Конверсия выросла на 40%, обращения в поддержку сократились в 3 раза.</div>
+<div class="testimonial-author">
+<div class="testimonial-avatar" style="background:var(--gradient1)">АК</div>
+<div><div class="testimonial-name">Алексей Козлов</div><div class="testimonial-role">CTO, FinStart</div></div>
+</div>
+</div>
+<div class="testimonial-card fade-in">
+<div class="testimonial-text">Глубокое понимание UX-процессов. Сделал не просто красиво, а удобно и продуманно. Рекомендую!</div>
+<div class="testimonial-author">
+<div class="testimonial-avatar" style="background:var(--gradient2)">МИ</div>
+<div><div class="testimonial-name">Мария Иванова</div><div class="testimonial-role">Product Manager, HealthPlus</div></div>
+</div>
+</div>
+<div class="testimonial-card fade-in">
+<div class="testimonial-text">Отлично работает с командой разработки. Дизайн-система, которую он создал, сэкономила нам недели разработки.</div>
+<div class="testimonial-author">
+<div class="testimonial-avatar" style="background:var(--gradient3)">ДП</div>
+<div><div class="testimonial-name">Дмитрий Петров</div><div class="testimonial-role">CEO, ShopFlow</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+<div class="container">
+<div class="cta fade-in">
+<h2>Давайте создадим <span class="gradient-text">что-то крутое</span></h2>
+<p>Открыт для новых проектов и сотрудничества. Напишите мне — обсудим ваш проект.</p>
+<div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+<a href="https://t.me/snikolaenko_ux" class="btn btn-primary">Telegram →</a>
+<a href="mailto:nikolaenko.ux@gmail.com" class="btn btn-outline">Email</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="footer-text">&copy; 2025 Сергей Николаенко. Все права защищены.</div>
+<div class="footer-links">
+<a href="https://t.me/snikolaenko_ux">Telegram</a>
+<a href="https://www.behance.net/">Behance</a>
+<a href="https://dribbble.com/">Dribbble</a>
+<a href="https://linkedin.com/">LinkedIn</a>
+</div>
+</div>
+</footer>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
+});
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Smooth nav scroll
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+link.addEventListener('click', e => {
+e.preventDefault();
+const target = document.querySelector(link.getAttribute('href'));
+if (target) target.scrollIntoView({ behavior: 'smooth' });
+});
+});
+
+// Nav scroll effect
+let lastScroll = 0;
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+const currentScroll = window.pageYOffset;
+if (currentScroll > 100) {
+nav.style.background = 'rgba(10,10,15,.95)';
+} else {
+nav.style.background = 'rgba(10,10,15,.85)';
+}
+lastScroll = currentScroll;
+});
+
+// Animate stat numbers
+const animateNumbers = () => {
+document.querySelectorAll('.stat-number').forEach(el => {
+const text = el.textContent;
+const num = parseInt(text);
+if (isNaN(num)) return;
+let current = 0;
+const step = num / 40;
+const suffix = text.replace(/[0-9]/g, '');
+const timer = setInterval(() => {
+current += step;
+if (current >= num) {
+el.textContent = text;
+clearInterval(timer);
+} else {
+el.textContent = Math.floor(current) + suffix;
+}
+}, 30);
+});
+};
+
+const statsObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+animateNumbers();
+statsObserver.disconnect();
+}
+});
+}, { threshold: 0.5 });
+
+const statsEl = document.querySelector('.stats');
+if (statsEl) statsObserver.observe(statsEl);
+
+// Mobile menu toggle
+const toggle = document.querySelector('.nav-toggle');
+const menu = document.querySelector('nav ul');
+if (toggle && menu) {
+toggle.addEventListener('click', () => {
+const isOpen = menu.style.display === 'flex';
+menu.style.display = isOpen ? 'none' : 'flex';
+menu.style.flexDirection = 'column';
+menu.style.position = 'absolute';
+menu.style.top = '72px';
+menu.style.left = '0';
+menu.style.right = '0';
+menu.style.background = 'rgba(10,10,15,.98)';
+menu.style.padding = '24px';
+menu.style.gap = '16px';
+menu.style.borderBottom = '1px solid var(--border)';
+});
+}
+</script>
+</body>
+</html>
