@@ -30,6 +30,9 @@ a{color:var(--accent2);text-decoration:none;transition:var(--transition)}
 a:hover{color:#fff}
 .container{max-width:1200px;margin:0 auto;padding:0 24px}
 
+/* DEMO BANNER */
+.demo-banner{background:linear-gradient(90deg,rgba(108,92,231,.15),rgba(162,155,254,.15));border-bottom:1px solid var(--border);padding:10px 0;text-align:center;font-size:.85rem;color:var(--accent2)}
+
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:var(--transition)}
 nav .container{display:flex;justify-content:space-between;align-items:center;height:72px}
@@ -59,8 +62,8 @@ nav ul a:hover::after{width:100%}
 .btn-outline:hover{border-color:var(--accent);color:#fff;transform:translateY(-2px)}
 
 /* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:80px}
-.stat{text-align:center;padding:24px}
+.stats{display:flex;justify-content:center;gap:24px;margin-top:80px}
+.stat{text-align:center;padding:24px 40px}
 .stat-number{font-size:2.5rem;font-weight:800;background:var(--gradient1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .stat-label{font-size:.85rem;color:var(--muted);margin-top:4px}
 
@@ -95,6 +98,7 @@ section{padding:100px 0}
 .project-info p{font-size:.9rem;color:var(--muted);margin-bottom:16px}
 .project-link{display:inline-flex;align-items:center;gap:6px;font-size:.9rem;font-weight:600;color:var(--accent2)}
 .project-link:hover{color:#fff}
+.example-badge{display:inline-block;padding:3px 10px;border-radius:50px;font-size:.7rem;font-weight:600;background:rgba(108,92,231,.15);color:var(--accent2);margin-bottom:8px}
 
 /* PROCESS */
 .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
@@ -155,14 +159,13 @@ footer .container{display:flex;justify-content:space-between;align-items:center}
 nav ul{display:none}
 .nav-toggle{display:block}
 .hero h1{font-size:2rem}
-.stats{grid-template-columns:repeat(2,1fr)}
+.stats{flex-direction:column;align-items:center}
 .services-grid,.skills-container,.testimonials-grid{grid-template-columns:1fr}
 .process-grid{grid-template-columns:repeat(2,1fr)}
 .cta{padding:40px 24px}
 footer .container{flex-direction:column;gap:16px;text-align:center}
 }
 @media(max-width:480px){
-.stats{grid-template-columns:1fr}
 .process-grid{grid-template-columns:1fr}
 .hero-buttons{flex-direction:column}
 }
@@ -185,23 +188,25 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 </div>
 </nav>
 
+<!-- DEMO BANNER -->
+<div class="demo-banner" style="padding-top:72px">
+&#128161; Эта страница является демонстрацией навыков верстки и UX/UI дизайна. Проекты приведены в качестве примеров оформления.
+</div>
+
 <!-- HERO -->
 <section class="hero">
 <div class="container">
 <div class="hero-content">
 <div class="hero-badge"><span class="dot"></span> Открыт для новых проектов</div>
 <h1>Сергей Николаенко<br><span class="gradient-text">UX/UI Дизайнер</span></h1>
-<p>Проектирую сложные сервисы и личные кабинеты. От UX-исследований до готовых макетов в Figma. E-commerce, Health/Fintech, SaaS и MVP-продукты.</p>
+<p>Проектирую сложные сервисы и личные кабинеты. От UX-исследований до готовых макетов. E-commerce, Health/Fintech, SaaS и MVP-продукты.</p>
 <div class="hero-buttons">
 <a href="#projects" class="btn btn-primary">Смотреть проекты →</a>
 <a href="#contact" class="btn btn-outline">Написать мне</a>
 </div>
 </div>
 <div class="stats fade-in">
-<div class="stat"><div class="stat-number">5+</div><div class="stat-label">Лет опыта</div></div>
-<div class="stat"><div class="stat-number">40+</div><div class="stat-label">Проектов</div></div>
-<div class="stat"><div class="stat-number">15+</div><div class="stat-label">Клиентов</div></div>
-<div class="stat"><div class="stat-number">98%</div><div class="stat-label">Довольных</div></div>
+<div class="stat"><div class="stat-number">2</div><div class="stat-label">Года опыта</div></div>
 </div>
 </div>
 </section>
@@ -223,7 +228,7 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <div class="service-card fade-in">
 <div class="service-icon" style="background:linear-gradient(135deg,rgba(253,121,168,.2),rgba(225,112,85,.2))">&#9997;</div>
 <h3>Проектирование интерфейсов</h3>
-<p>Wireframes, прототипы, интерактивные макеты в Figma с дизайн-системой</p>
+<p>Wireframes, прототипы, интерактивные макеты с дизайн-системой</p>
 </div>
 <div class="service-card fade-in">
 <div class="service-icon" style="background:linear-gradient(135deg,rgba(0,206,201,.2),rgba(9,132,227,.2))">&#128187;</div>
@@ -254,8 +259,8 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <div class="container">
 <div class="section-header fade-in">
 <span class="section-label">Портфолио</span>
-<h2 class="section-title">Избранные проекты</h2>
-<p class="section-desc">Образцы работ, демонстрирующие мой подход к проектированию интерфейсов</p>
+<h2 class="section-title">Примеры проектов</h2>
+<p class="section-desc">Образцы оформления кейсов для демонстрации дизайна и верстки</p>
 </div>
 <div class="projects-grid">
 
@@ -272,10 +277,10 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <div class="overlay"><span class="btn btn-primary">Подробнее</span></div>
 </div>
 <div class="project-info">
-<div class="project-tags"><span class="project-tag">Fintech</span><span class="project-tag">Dashboard</span><span class="project-tag">Figma</span></div>
+<span class="example-badge">Пример для демонстрации</span>
+<div class="project-tags"><span class="project-tag">Fintech</span><span class="project-tag">Dashboard</span><span class="project-tag">Web</span></div>
 <h3>Fintech Dashboard</h3>
 <p>Личный кабинет для финансовой платформы: аналитика, транзакции, портфель, уведомления. Дизайн-система на 120+ компонентов.</p>
-<a href="#" class="project-link">Смотреть кейс →</a>
 </div>
 </div>
 
@@ -292,10 +297,10 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <div class="overlay"><span class="btn btn-primary">Подробнее</span></div>
 </div>
 <div class="project-info">
+<span class="example-badge">Пример для демонстрации</span>
 <div class="project-tags"><span class="project-tag">Health</span><span class="project-tag">Mobile App</span><span class="project-tag">iOS</span></div>
 <h3>Health & Wellness App</h3>
 <p>Мобильное приложение для трекинга здоровья: питание, сон, активность, запись к врачу. 50+ экранов, iOS HIG.</p>
-<a href="#" class="project-link">Смотреть кейс →</a>
 </div>
 </div>
 
@@ -310,10 +315,10 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <div class="overlay"><span class="btn btn-primary">Подробнее</span></div>
 </div>
 <div class="project-info">
+<span class="example-badge">Пример для демонстрации</span>
 <div class="project-tags"><span class="project-tag">E-commerce</span><span class="project-tag">Web</span><span class="project-tag">Responsive</span></div>
 <h3>E-commerce Платформа</h3>
-<p>Интернет-магазин с каталогом, фильтрами, корзиной и личным кабинетом. Конверсия checkout +34%.</p>
-<a href="#" class="project-link">Смотреть кейс →</a>
+<p>Интернет-магазин с каталогом, фильтрами, корзиной и личным кабинетом. Адаптивный дизайн, оптимизация checkout.</p>
 </div>
 </div>
 
@@ -328,10 +333,10 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <div class="overlay"><span class="btn btn-primary">Подробнее</span></div>
 </div>
 <div class="project-info">
+<span class="example-badge">Пример для демонстрации</span>
 <div class="project-tags"><span class="project-tag">SaaS</span><span class="project-tag">CRM</span><span class="project-tag">B2B</span></div>
 <h3>SaaS CRM-система</h3>
 <p>CRM для отделов продаж: воронки, аналитика, интеграции с мессенджерами. Kanban-доски, таймлайн, отчёты.</p>
-<a href="#" class="project-link">Смотреть кейс →</a>
 </div>
 </div>
 
@@ -383,7 +388,6 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <div class="skill-category">
 <h3>&#127912; Дизайн</h3>
 <div class="skill-list">
-<span class="skill-tag">Figma</span>
 <span class="skill-tag">Sketch</span>
 <span class="skill-tag">Adobe XD</span>
 <span class="skill-tag">Photoshop</span>
@@ -424,7 +428,6 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <span class="skill-tag">Jira</span>
 <span class="skill-tag">Notion</span>
 <span class="skill-tag">Miro</span>
-<span class="skill-tag">FigJam</span>
 <span class="skill-tag">Analytics</span>
 <span class="skill-tag">Design Systems</span>
 </div>
@@ -473,8 +476,7 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <h2>Давайте создадим <span class="gradient-text">что-то крутое</span></h2>
 <p>Открыт для новых проектов и сотрудничества. Напишите мне — обсудим ваш проект.</p>
 <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-<a href="https://t.me/snikolaenko_ux" class="btn btn-primary">Telegram →</a>
-<a href="mailto:nikolaenko.ux@gmail.com" class="btn btn-outline">Email</a>
+<a href="https://t.me/nsv_01" class="btn btn-primary">Telegram @nsv_01 →</a>
 </div>
 </div>
 </div>
@@ -485,7 +487,7 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <div class="container">
 <div class="footer-text">&copy; 2025 Сергей Николаенко. Все права защищены.</div>
 <div class="footer-links">
-<a href="https://t.me/snikolaenko_ux">Telegram</a>
+<a href="https://t.me/nsv_01">Telegram</a>
 <a href="https://www.behance.net/">Behance</a>
 <a href="https://dribbble.com/">Dribbble</a>
 <a href="https://linkedin.com/">LinkedIn</a>
@@ -526,39 +528,6 @@ nav.style.background = 'rgba(10,10,15,.85)';
 }
 lastScroll = currentScroll;
 });
-
-// Animate stat numbers
-const animateNumbers = () => {
-document.querySelectorAll('.stat-number').forEach(el => {
-const text = el.textContent;
-const num = parseInt(text);
-if (isNaN(num)) return;
-let current = 0;
-const step = num / 40;
-const suffix = text.replace(/[0-9]/g, '');
-const timer = setInterval(() => {
-current += step;
-if (current >= num) {
-el.textContent = text;
-clearInterval(timer);
-} else {
-el.textContent = Math.floor(current) + suffix;
-}
-}, 30);
-});
-};
-
-const statsObserver = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-animateNumbers();
-statsObserver.disconnect();
-}
-});
-}, { threshold: 0.5 });
-
-const statsEl = document.querySelector('.stats');
-if (statsEl) statsObserver.observe(statsEl);
 
 // Mobile menu toggle
 const toggle = document.querySelector('.nav-toggle');
